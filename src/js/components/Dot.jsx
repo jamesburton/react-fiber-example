@@ -55,7 +55,7 @@ Dot.propTypes = {
   x: PropTypes.number,
   y: PropTypes.number,
   text: PropTypes.string,
-  size: PropTypes.string
+  size: PropTypes.number
 };
 
 export default Dot;
