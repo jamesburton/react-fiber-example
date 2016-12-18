@@ -1,14 +1,16 @@
-import React from 'react';
-import {render} from 'react-dom';
 import App from './containers/App';
 
-const init = () => {
+const start = new Date().getTime();
 
-  render(
-    <App />,
+const update = () => {
+
+  ReactDOMFiber.render(
+    <App elapsed={new Date().getTime() - start} />,
     document.querySelector(`.react-mount`)
   );
 
+  requestAnimationFrame(update);
+
 };
 
-init();
+requestAnimationFrame(update);

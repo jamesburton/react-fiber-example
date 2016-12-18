@@ -28,7 +28,7 @@ const copy = new CopyWebpackPlugin([{
 });
 
 const config = {
-  
+
   // no HTML entry points for production build (bundled in JavaScript)
   entry: [
     require.resolve(`react-dev-utils/webpackHotDevClient`),
@@ -92,12 +92,6 @@ const config = {
         use: [
           {
             loader: `babel-loader`
-          },
-          {
-            loader: `eslint-loader`,
-            options: {
-              fix: true
-            }
           }
         ]
       },
