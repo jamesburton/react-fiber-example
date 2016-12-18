@@ -15,6 +15,8 @@ class Dot extends Component {
   render() {
 
     const {x, y, size, text} = this.props;
+    const {hover} = this.state;
+
     const s = size * 1.3;
 
     const base = {
@@ -31,14 +33,18 @@ class Dot extends Component {
       height: `${s}px`,
       left: `${x}px`,
       top: `${y}px`,
-      borderRadius: `${(s / 2)}px`,
+      borderRadius: `${s / 2}px`,
       lineHeight: `${s}px`,
-      background: this.state.hover ? `#ff0` : base.background
+      background: hover ? `#ff0` : base.background
     };
 
     return (
-      <div style={style} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
-        {this.state.hover ? `*${text}*` : text}
+      <div
+        style={style}
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}
+      >
+        {hover ? `*${text}*` : text}
       </div>
     );
 
