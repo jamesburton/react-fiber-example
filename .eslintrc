@@ -1,7 +1,7 @@
 {
   "extends": "devine/react",
   "rules": {
-    "react/jsx-key": 0
+    "react/jsx-key": 0,
   },
   "globals": {
     "ReactDOMFiber": true,

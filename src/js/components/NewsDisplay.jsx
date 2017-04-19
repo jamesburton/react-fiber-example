@@ -1,6 +1,6 @@
 const {PropTypes, Component} = React;
 
-class Dot extends Component {
+class NewsDisplay extends Component {
 
   state = {hover: false}
 
@@ -14,26 +14,27 @@ class Dot extends Component {
 
   render() {
 
-    const {x, y, size, text} = this.props;
+    const {x, y, size, news} = this.props;
     const {hover} = this.state;
 
-    const s = size * 1.3;
+    const s = size * 2.3;
 
     const base = {
       position: `absolute`,
-      background: `#61dafb`,
-      font: `normal 15px sans-serif`,
+      background: `#515a5b`,
+      font: `normal ${size}px sans-serif`,
       textAlign: `center`,
       cursor: `pointer`,
+      zIndex: 1000
     };
 
     const style = {
       ...base,
-      width: `${s}px`,
-      height: `${s}px`,
+      width: `${s*20}px`,
+      height: `${s*news.length}px`,
       left: `${x}px`,
       top: `${y}px`,
-      borderRadius: `${s / 2}px`,
+      borderRadius: `${s / 4}px`,
       lineHeight: `${s}px`,
       background: hover ? `#ff0` : base.background
     };
@@ -44,18 +45,19 @@ class Dot extends Component {
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
-        {hover ? `*${text}*` : `<${text}>` }
+        {/*hover ? `*${text}*` : `<${text}>` */}
+        {news.map((newsItem,i) => <div key={i}>{newsItem}</div>)}
       </div>
     );
 
   }
 }
 
-Dot.propTypes = {
+NewsDisplay.propTypes = {
   x: PropTypes.number,
   y: PropTypes.number,
-  text: PropTypes.string,
+  news: PropTypes.arrayOf(PropTypes.string),
   size: PropTypes.number
 };
 
-export default Dot;
+export default NewsDisplay;

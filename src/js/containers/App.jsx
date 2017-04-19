@@ -1,4 +1,6 @@
 import Triangle from '../components/Triangle';
+import TimeDisplay from '../components/TimeDisplay';
+import NewsDisplay from '../components/NewsDisplay';
 
 const {Component, PropTypes} = React;
 
@@ -42,6 +44,9 @@ class App extends Component {
     return (
 
       <div style={{...containerStyle, transform}}>
+        <TimeDisplay x={100} y={200} size={30} seconds={Math.floor(elapsed / 1000)} />
+        <NewsDisplay x={10} y={50} size={16} news={[`Test 1`, `Another Example`]} />
+
         <Triangle x={0} y={0} s={1000}>
           {`${seconds}`}
         </Triangle>

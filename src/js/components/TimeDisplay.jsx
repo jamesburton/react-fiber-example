@@ -1,6 +1,6 @@
 const {PropTypes, Component} = React;
 
-class Dot extends Component {
+class TimeDisplay extends Component {
 
   state = {hover: false}
 
@@ -14,28 +14,30 @@ class Dot extends Component {
 
   render() {
 
-    const {x, y, size, text} = this.props;
+    const {x, y, size, seconds} = this.props;
     const {hover} = this.state;
+
+    const text = `${seconds}s`;
 
     const s = size * 1.3;
 
     const base = {
       position: `absolute`,
-      background: `#61dafb`,
-      font: `normal 15px sans-serif`,
+      background: `#915abb`,
+      font: `normal 18px sans-serif`,
       textAlign: `center`,
       cursor: `pointer`,
     };
 
     const style = {
       ...base,
-      width: `${s}px`,
+      width: `${s*4}px`,
       height: `${s}px`,
       left: `${x}px`,
       top: `${y}px`,
-      borderRadius: `${s / 2}px`,
+      borderRadius: `${s / 4}px`,
       lineHeight: `${s}px`,
-      background: hover ? `#ff0` : base.background
+      background: hover ? `#f0f` : base.background
     };
 
     return (
@@ -51,11 +53,12 @@ class Dot extends Component {
   }
 }
 
-Dot.propTypes = {
+TimeDisplay.propTypes = {
   x: PropTypes.number,
   y: PropTypes.number,
   text: PropTypes.string,
+  seconds: PropTypes.number,
   size: PropTypes.number
 };
 
-export default Dot;
+export default TimeDisplay;
